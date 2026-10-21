@@ -24,3 +24,8 @@ Tip: periodically export this file to PDF and email it to yourself (or store it 
 - Who was involved: Matias, with Claude (AI assistant) for documentation.
 - Files created: README.md, 01_Rules/UTO_Rules_v0.1.md, 01_Rules/CHANGELOG.md, 02_Decisions/Decision_Log.md, admin/math/playtest/prior-art/submission templates.
 - Disclosed to: none new.
+
+## 2026-10-21 — Development roadmap created
+- What changed: Added ROADMAP.md: phases from housekeeping/IP hygiene through math v0.2, playtests, rules v0.2, IP protection, operations and commercial path, with gates and owners.
+- Who was involved: Matias, with Claude (AI assistant).
+- Disclosed to: none new.
