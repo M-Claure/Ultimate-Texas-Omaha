@@ -30,3 +30,6 @@ This folder is the single source of truth for the design, math, testing, IP and 
 4. **IDs:** decisions `D-###`, experiments `EXP-###`, playtests `PT-###`, prior-art items `PA-###`, invention-log entries by date.
 5. **Append-only logs:** fix mistakes with a new dated entry ("Correction to …"), don't delete history.
 6. **Disclosure discipline:** log everyone who sees the rules (`00_Admin/Disclosure_Log.md`). Avoid public posting until IP strategy is settled (see `00_Admin/IP_Checklist.md`).
+
+## Version control
+This folder is a git repo (`origin`: github.com/M-Claure/Ultimate-Texas-Omaha). Commit after each meaningful change with a message that cites IDs, e.g. `Rules v0.2: ties push (D-006, EXP-003)`. Tag each rules release (`git tag rules-v0.1`).
