@@ -29,3 +29,8 @@ Tip: periodically export this file to PDF and email it to yourself (or store it 
 - What changed: Added ROADMAP.md: phases from housekeeping/IP hygiene through math v0.2, playtests, rules v0.2, IP protection, operations and commercial path, with gates and owners.
 - Who was involved: Matias, with Claude (AI assistant).
 - Disclosed to: none new.
+
+## 2026-10-21 — Tie rule clarified (Rules v0.2)
+- What changed: Matias clarified that a tie counts as a lost hand, not an automatic overall loss (Win+Tie = push). Recorded as D-006, Rules v0.2.
+- Who was involved: Matias, with Claude (AI assistant).
+- Disclosed to: none new.

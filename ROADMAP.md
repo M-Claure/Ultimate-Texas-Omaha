@@ -12,7 +12,7 @@ Timelines assume part-time work alongside school. Weeks are counted from 2026-10
 | 0. Housekeeping & IP hygiene | Do you own this, and is it protected while you test? | Week 1 | Ownership clear; disclosure rules in place |
 | 1. Math v0.2 | Does the game make money for the house without being unbeatable or unfair? | Weeks 1–6 | **Gate 1:** a rule set with a sensible house edge and no exploit |
 | 2. Private playtests | Is it fun, understandable and fast enough? | Weeks 3–8 (parallel) | **Gate 2:** players get it and want to keep playing |
-| 3. Rules v0.2 + final house way | Lock the game | Weeks 6–9 | Rules frozen for IP filing |
+| 3. Rules v0.3 + final house way | Lock the game | Weeks 6–9 | Rules frozen for IP filing |
 | 4. IP protection | Can it be protected, and is it new? | Weeks 8–12 | **Gate 3:** provisional filed (or decision not to) |
 | 5. Operational v0.3 | Can a real dealer run it at speed? | Weeks 10–16 | Dealer procedures + layout + rack card done |
 | 6. Commercial path | License to a distributor or go for approval yourself | Month 4+ | **Gate 4:** route chosen |
@@ -56,11 +56,11 @@ Watch-outs the math must answer: (a) how often Hold'em ties because both hands p
 | 2.4 | Measure: time to set the split, hands/hour, confusion points, fun, reaction to pushes and ties | M logs, C analyzes | Playtest summary |
 | 2.5 | **Gate 2 decision:** keep, simplify, or change mechanics | M | Decision-log entries |
 
-## Phase 3 — Rules v0.2 + final dealer house way (Weeks 6–9)
+## Phase 3 — Rules v0.3 + final dealer house way (Weeks 6–9)
 | # | Task | Owner | Done when |
 |---|---|---|---|
 | 3.1 | Design an equity-based, published, deterministic dealer house way; compare against v0.1 by simulation | C | EXP report + house-way document |
-| 3.2 | Write `UTO_Rules_v0.2.md` incorporating Gate 1 & 2 decisions; changelog; tag `rules-v0.2` | C, M approves | Tagged in git |
+| 3.2 | Write `UTO_Rules_v0.3.md` incorporating Gate 1 & 2 decisions; changelog; tag `rules-v0.3` | C, M approves | Tagged in git |
 | 3.3 | Re-run house edge on final rules | C | Final math report draft |
 
 ## Phase 4 — IP protection (Weeks 8–12)

@@ -6,7 +6,7 @@ This folder is the single source of truth for the design, math, testing, IP and 
 ## Current status
 | Item | Value |
 |---|---|
-| Current rules version | **v0.1** (`01_Rules/UTO_Rules_v0.1.md`) |
+| Current rules version | **v0.2** (`01_Rules/UTO_Rules_v0.2.md`) |
 | Stage | Prototype — payouts, house edge, strategy and dealer house way unvalidated |
 | Next milestone | Math v0.2: evaluator + simulator, optimal raise strategy, house edge |
 | Plan | See `ROADMAP.md` |

@@ -28,7 +28,7 @@ Append-only. One entry per design decision. To reverse a decision, add a new ent
 
 ## D-002 — Tie in either component = overall loss
 - Date: carried over from original concept draft; logged 2026-10-21
-- Status: Accepted (provisional)
+- Status: Superseded by D-006
 - Rules version affected: v0.1
 - Decision: Player must WIN both components; any tie loses the whole wager. Only one-win/one-loss pushes.
 - Why: Provides house edge in an even-money game with no dealer qualification. Explicitly supersedes an earlier, more permissive interpretation in the draft.
@@ -64,3 +64,13 @@ Append-only. One entry per design decision. To reverse a decision, add a new ent
 - Why: 6 × 7 + 8 = 50 cards fits one deck; seven players would need 56. Side bets would complicate early validation.
 - Evidence: Card arithmetic.
 - Revisit when: Operational v0.3 (alternative burn procedures, side-bet design).
+
+## D-006 — A tie counts as a lost hand (not an automatic overall loss)
+- Date: 2026-10-21
+- Status: Accepted (provisional)
+- Rules version affected: v0.2
+- Decision: Each tied component is scored as a lost hand. Overall result = number of hands won: 2 = WIN, 1 = PUSH, 0 = LOSS. So Win + Tie and Tie + Win are PUSH.
+- Why: Matias clarified this was the intended rule; the original draft's "any tie = overall loss" misstated it. It is also simpler to explain ("a tie loses that hand").
+- Evidence: Design intent; EV impact to be measured.
+- Alternatives considered: Any tie = overall loss (D-002, harsher); ties push that hand (more generous).
+- Revisit when: Math shows the house edge with this rule.
