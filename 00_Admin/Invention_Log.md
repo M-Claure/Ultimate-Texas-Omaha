@@ -1,0 +1,26 @@
+# Invention Log
+Dated, append-only record of how the game was conceived and developed. Write entries the day things happen. Don't edit old entries — add a correction entry instead.
+
+Tip: periodically export this file to PDF and email it to yourself (or store it somewhere with independent timestamps) so there is third-party evidence of the date.
+
+**Entry template**
+```
+## YYYY-MM-DD — <title>
+- What was conceived / changed:
+- Who was involved:
+- Files created/updated:
+- Who it was disclosed to (also log in Disclosure_Log.md):
+```
+
+---
+
+## [2026-10-21] — Original concept
+- What was conceived: Six-card Hold'em/Omaha split game vs dealer, Pai Gow-style aggregate settlement, UTH-style staged raises.
+- Who was involved: [FILL IN — anyone who helped shape the idea, including AI tools used]
+- Files: `01_Rules/archive/Ultimate_Texas_Omaha_Concept.docx` (note: this file's internal metadata dates are template defaults and are NOT a reliable record of when it was written)
+
+## 2026-10-21 — Project record established
+- What changed: Created folder structure and documentation system. Converted concept draft into formal Rules v0.1 (no substantive rule changes). Logged decisions D-001–D-005.
+- Who was involved: Matias, with Claude (AI assistant) for documentation.
+- Files created: README.md, 01_Rules/UTO_Rules_v0.1.md, 01_Rules/CHANGELOG.md, 02_Decisions/Decision_Log.md, admin/math/playtest/prior-art/submission templates.
+- Disclosed to: none new.
