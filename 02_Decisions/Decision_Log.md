@@ -122,3 +122,10 @@ Append-only. One entry per design decision. To reverse a decision, add a new ent
 - Why: Simple enough to memorise; house edge vs book players 7.42% (optimal 4.6%).
 - Evidence: EXP-004.
 - Revisit when: improving the no-pair split and flop rules (up to ~2.4% recoverable).
+
+## D-012 — Player strategy book v2
+- Date: 2026-10-22
+- Status: Accepted (supersedes D-011 for the published book)
+- Decision: The book now uses split rule B2 (in no-pair hands the King-high rule matches the Ace rule), preflop rule R2 (unchanged) and flop rule F2 (adds Omaha two pair + Hold'em pair using its own card on unpaired flops). Published in `UTO_Game_Book_v0.3.md` and the playtest rules sheet.
+- Why: House edge vs book players 7.31% (v1 7.42%). Further gains need rules too complex to memorise.
+- Evidence: EXP-005.

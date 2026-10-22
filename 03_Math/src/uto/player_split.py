@@ -23,8 +23,10 @@ def _suit_tiebreak(h, cands):
     return best
 
 
-def book_split(h, variant="B1"):
-    """Variant "B1" (strategy book, see EXP-004): rules 1-2 below, then
+def book_split(h, variant="B2"):
+    """Variant "B2" (strategy book v2, EXP-005) = B1 except step 4(b) also applies when the
+    highest card is a King (King with the lowest card of its suit).
+    Variant "B1" (strategy book v1, see EXP-004): rules 1-2 below, then
       3. One pair: the pair in Hold'em, unless the pair is Tens or lower and you also hold an
          unpaired Ace AND King: then Ace-King goes in Hold'em.
       4. No pair: (a) second-highest card Queen or higher -> two highest cards in Hold'em;
@@ -54,13 +56,13 @@ def book_split(h, variant="B1"):
         return ranks_split(x, x)
     order = sorted(range(6), key=lambda k: (-r[k], -h[k]))
     if len(pairs) == 1:
-        if variant == "B1" and pairs[0] <= 8 and cnt[12] == 1 and cnt[11] == 1:
+        if variant in ("B1", "B2") and pairs[0] <= 8 and cnt[12] == 1 and cnt[11] == 1:
             return ranks_split(12, 11)
         return ranks_split(pairs[0], pairs[0])
-    if variant == "B1":
+    if variant in ("B1", "B2"):
         if r[order[1]] >= 10:
             return ranks_split(r[order[0]], r[order[1]])
-        if r[order[0]] == 12:
+        if r[order[0]] == 12 or (variant == "B2" and r[order[0]] == 11):
             ace = order[0]
             same = [k for k in order[1:] if (h[k] & 3) == (h[ace] & 3)]
             return _pick(h, [ace, same[-1] if same else order[-1]])

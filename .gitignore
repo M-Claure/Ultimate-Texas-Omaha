@@ -7,3 +7,4 @@ __pycache__/
 .pytest_cache/
 03_Math/experiments/*/info_*.npz
 03_Math/experiments/*/chunks/
+Claude outputs/

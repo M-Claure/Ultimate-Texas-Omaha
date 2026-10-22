@@ -14,7 +14,7 @@ T = load(); NF, FL = tables(); args = (T["he_win"], T["he_tie"], T["om_win"], T[
 N = int(sys.argv[1]); rng = np.random.default_rng(51_000_000)
 hands, splits = [], []
 while len(hands) < N:
-    h = rng.choice(52, 6, replace=False).astype(np.int64); p = book_split(h)
+    h = rng.choice(52, 6, replace=False).astype(np.int64); p = book_split(h, "B1")
     if not preflop_raise(h, p):
         hands.append(h); splits.append(p)
 t = time.time()

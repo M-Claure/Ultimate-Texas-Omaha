@@ -54,3 +54,8 @@ Tip: periodically export this file to PDF and email it to yourself (or store it 
 ## 2026-10-22 — House Way H confirmed
 - What changed: Matias confirmed dealer House Way H (D-008 accepted).
 - Disclosed to: none new.
+
+## 2026-10-22 — Strategy book v2 and playtest kit
+- What changed: Strategy book v2 (EXP-005, D-012). Playtest kit created in 04_Playtests/kit: player rules sheet, player mat, dealer mat, dealer card, session log + feedback form, with generators.
+- Who was involved: Matias, with Claude (AI assistant).
+- Disclosed to: none new.

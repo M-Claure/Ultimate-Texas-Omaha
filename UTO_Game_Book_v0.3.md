@@ -1,6 +1,6 @@
 # Ultimate Texas Omaha — Game Book (v0.3 draft)
 
-*Working title. Prototype math, not yet independently certified. Prepared 2026-10-22.*
+*Working title. Prototype math, not yet independently certified. Prepared 2026-10-22; strategy book updated to v2 the same day.*
 
 ## 1. The game in one paragraph
 A house-banked poker game. The player and the dealer each get six cards and split them into a **2-card Texas Hold'em hand** and a **4-card Omaha hand**. Both hands play against the same five community cards. The player raises once, at most, as the board comes out: **4× before the flop, 2× on the flop, or 1× at the river**. To win, the player must beat the dealer with **both** hands. Winning one and losing the other is a push. A tie counts as a lost hand.
@@ -37,7 +37,7 @@ Use the first step that applies:
 4. **No pair:** the two highest cards go to Hold'em.
 5. **Suits:** when there's a choice, keep same-suited cards together in Omaha.
 
-## 4. Player strategy (Book v1)
+## 4. Player strategy (Book v2)
 
 ### 4.1 Setting your hand
 1. **Three or four of a kind:** two of them in Hold'em.
@@ -45,7 +45,7 @@ Use the first step that applies:
 3. **One pair:** the pair in Hold'em. *Exception:* if your pair is **Tens or lower** and you also hold an unpaired **Ace and King**, put **A-K** in Hold'em.
 4. **No pair:**
    - (a) If your second-highest card is a **Queen or higher**, put your **two highest** cards in Hold'em.
-   - (b) Otherwise, if you have an **Ace**, put the Ace in Hold'em with the **lowest card of the same suit**. If no card matches its suit, use your lowest card.
+   - (b) Otherwise, if your highest card is an **Ace or King**, put it in Hold'em with the **lowest card of the same suit**. If no card matches its suit, use your lowest card.
    - (c) Otherwise, put your **two lowest** cards in Hold'em.
 5. **Suits:** when there's a choice, keep same-suited cards together in Omaha.
 
@@ -62,6 +62,7 @@ Otherwise check.
 ### 4.3 On the flop — raise 2× if any of these is true:
 - your **Omaha** hand already has **three of a kind or better** (using exactly 2 of its cards);
 - the flop is **unpaired** and your **Hold'em** hand has **top pair or better** (top pair, an overpair, two pair or better), and the flop's highest card is **8 or higher** (on lower flops you need **two pair or better**);
+- the flop is **unpaired**, your **Omaha** hand has **two pair** and your **Hold'em** hand has any pair using one of its own cards;
 - the flop is **paired** and your **Hold'em** hand has **three of a kind or better**.
 
 Otherwise check.
@@ -75,7 +76,7 @@ If you haven't raised, bet 1× (required).
 | Player | House edge (per Base) | Element of risk | Average total bet |
 |---|---|---|---|
 | **Perfect play** | **≈ 4.6%** (true value between 4.2% and 5.0%) | ≈ 1.5% | 3.13 units |
-| Following this book | 7.4% (± 0.3%) | 2.5% | 3.00 units |
+| Following this book (v2) | 7.3% (± 0.3%) | 2.4% | 3.04 units |
 
 Commonly quoted for comparison: Ultimate Texas Hold'em ≈ 2.2% / 0.5%, Three Card Poker (Ante) ≈ 3.4% / 2.0%, Mississippi Stud ≈ 4.9% / 1.4%.
 
@@ -89,22 +90,25 @@ Commonly quoted for comparison: Ultimate Texas Hold'em ≈ 2.2% / 0.5%, Three Ca
 
 Standard deviation per hand ≈ 2.0 units.
 
-### 5.3 What happens following the book (2,000,000 simulated hands)
+### 5.3 What happens following the book v2 (2,000,000 simulated hands)
 | Final bet | How often | Win | Push | Loss |
 |---|---|---|---|---|
 | 4× preflop | 27.4% | 34.5% | 50.3% | 15.2% |
-| 2× flop | 17.3% | 33.1% | 55.2% | 11.7% |
-| 1× river | 55.2% | 14.2% | 51.7% | 34.1% |
-| **All hands** | | **23.0%** | **51.9%** | **25.0%** |
+| 2× flop | 21.9% | 31.2% | 55.3% | 13.5% |
+| 1× river | 50.7% | 13.6% | 50.8% | 35.6% |
+| **All hands** | | **23.2%** | **51.6%** | **25.1%** |
 
 ## 6. How these numbers were calculated
 - **Hand evaluation:** custom evaluators, cross-checked on 40,000 random comparisons against an independent open-source evaluator.
 - **Perfect play:** solved backwards (river → flop → preflop → split) for 30,000 + 12,000 random player hands. Probabilities come from Monte Carlo over the unseen cards. Sampled river probabilities match a full enumeration of all 4,496,388 dealer hands.
 - **Error bars:** the "perfect play" figure is bracketed. One estimate slightly flatters the player and one slightly understates them, so the true value lies between. Sampling error is about ±0.2%.
-- Details: `03_Math/experiments/EXP-003` and `EXP-004`.
+- Details: `03_Math/experiments/EXP-003`, `EXP-004` and `EXP-005`.
 
-## 7. Open items
+## 7. Playtest kit
+Printable mats, dealer card, player rules sheet and session log: `04_Playtests/kit/`.
+
+## 8. Open items
 - **Certification:** independent math certification is required before any casino trial.
 - **Player appeal:** test whether players accept a Base that never wins outright and a required river bet. A Base bonus paytable for strong hands is a possible future add-on.
-- **Strategy book:** v1 gives up ~2.8% versus perfect play. Better split and flop rules could narrow this.
+- **Strategy book:** v2 gives up ~2.7% versus perfect play. Most of this is in the split (~1.4%), which depends on fine suit and connectivity details that simple rules can't capture (EXP-005). Quote the optimal-play figure to regulators, and expect real players to give the house 7–8% or more.
 - **Assumptions:** figures assume one player against the dealer. Multi-player card removal effects are expected to be small.

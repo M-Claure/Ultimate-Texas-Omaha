@@ -1,7 +1,7 @@
-"""Play the strategy book (B1 split, preflop R2, flop F1, always call 1x at river) against the
+"""Play the strategy book (v1: B1 split, preflop R2, flop F1; v2: B2 split, R2, flop F2; always 1x at river) against the
 dealer (House Way H) on real random deals and measure the house edge. Rule-based decisions use
 only the player's own information, so this is an unbiased estimate for a human following the book.
-Usage: python3 book_sim.py N_HANDS WORKERS"""
+Usage: python3 book_sim.py N_HANDS WORKERS [v1|v2]"""
 import sys, os, json, time
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "..", "src"))
@@ -9,18 +9,24 @@ import numpy as np
 from multiprocessing import Pool
 
 
-def flop_raise(f):
+VERSION = "v1"
+
+
+def flop_raise(f, version="v1"):
     U = f["board_paired"] == 0
     he_real = f["he_cat"]
     if not U and f["he_cat"] == 1:
         he_real = 0
     if not U and f["he_cat"] == 2 and f["he_pair_hole"] == 1:
         he_real = 1
-    return (f["om_cat"] >= 3) or (U and f["he_top_pair_plus"] == 1 and (f["board_high"] >= 6 or f["he_cat"] >= 2)) or ((not U) and he_real >= 3)
+    r = (f["om_cat"] >= 3) or (U and f["he_top_pair_plus"] == 1 and (f["board_high"] >= 6 or f["he_cat"] >= 2)) or ((not U) and he_real >= 3)
+    if version == "v2":   # F2: also Omaha two pair + Hold'em pair using one of your cards, unpaired flop
+        r = r or (U and f["om_cat"] == 2 and f["he_pair_hole"] == 1)
+    return r
 
 
 def worker(args):
-    seed, n = args
+    seed, n, version = args
     from uto.equity import load
     from uto.evaluator import tables, holdem_fast, omaha_fast
     from uto.house_way import choose_split, SIMPLE, simple_code, PAIRS6, COMP6
@@ -34,10 +40,10 @@ def worker(args):
     for i in range(n):
         d = rng.permutation(52).astype(np.int64)
         ph, dh, board = d[:6], d[6:12], d[12:17]
-        pp = book_split(ph)
+        pp = book_split(ph, "B1" if version == "v1" else "B2")
         if preflop_raise(ph, pp):
             R = 4; act[i] = 4
-        elif flop_raise(flop_features(ph, pp, board[:3])):
+        elif flop_raise(flop_features(ph, pp, board[:3]), version):
             R = 2; act[i] = 2
         else:
             R = 1; act[i] = 1
@@ -54,12 +60,13 @@ def worker(args):
 
 if __name__ == "__main__":
     N, Wk = int(sys.argv[1]), int(sys.argv[2])
+    version = sys.argv[3] if len(sys.argv) > 3 else "v1"
     t = time.time()
     with Pool(Wk) as pool:
-        parts = pool.map(worker, [(61_000_000 + k, N // Wk) for k in range(Wk)])
+        parts = pool.map(worker, [(61_000_000 + k, N // Wk, version) for k in range(Wk)])
     res = np.concatenate([p[0] for p in parts]); bet = np.concatenate([p[1] for p in parts])
     act = np.concatenate([p[2] for p in parts]); oc = np.concatenate([p[3] for p in parts])
-    out = dict(hands=len(res), house_edge=float(-res.mean()), ci95=float(1.96 * res.std() / np.sqrt(len(res))),
+    out = dict(book_version=version, hands=len(res), house_edge=float(-res.mean()), ci95=float(1.96 * res.std() / np.sqrt(len(res))),
                element_of_risk=float(-res.mean() / bet.mean()), avg_total_bet=float(bet.mean()), sd=float(res.std()),
                raise4=float((act == 4).mean()), raise2=float((act == 2).mean()), call1=float((act == 1).mean()),
                win=float((oc == 1).mean()), push=float((oc == 0).mean()), loss=float((oc == -1).mean()),
@@ -67,5 +74,5 @@ if __name__ == "__main__":
                                        push=float((oc[act == a] == 0).mean()), loss=float((oc[act == a] == -1).mean()))
                           for a in (4, 2, 1)},
                seconds=time.time() - t)
-    json.dump(out, open(os.path.join(HERE, "book_sim_results.json"), "w"), indent=1)
+    json.dump(out, open(os.path.join(HERE, f"book_sim_results_{version}.json"), "w"), indent=1)
     print(json.dumps(out, indent=1))
