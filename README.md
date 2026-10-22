@@ -6,9 +6,9 @@ This folder is the single source of truth for the design, math, testing, IP and 
 ## Current status
 | Item | Value |
 |---|---|
-| Current rules version | **v0.2** (`01_Rules/UTO_Rules_v0.2.md`) |
-| Stage | Prototype — payouts, house edge, strategy and dealer house way unvalidated |
-| Next milestone | Choose economics (D-009) and approve House Way H (D-008); then EXP-003 Base bonus paytable |
+| Current rules version | **v0.3 draft** (`01_Rules/UTO_Rules_v0.3.md`) — game book: `UTO_Game_Book_v0.3.md` |
+| Stage | Prototype — house edge ≈ 4.6% under optimal play (simulation; not certified) |
+| Next milestone | Confirm House Way H (D-008); improve strategy book; playtests |
 | Plan | See `ROADMAP.md` |
 | Public disclosure so far | See `00_Admin/Disclosure_Log.md` |
 

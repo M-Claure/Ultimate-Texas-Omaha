@@ -88,7 +88,7 @@ Append-only. One entry per design decision. To reverse a decision, add a new ent
 
 ## D-008 — Dealer House Way H (simple five-step rule)
 - Date: 2026-10-21
-- Status: **Proposed** — awaiting Matias's approval
+- Status: **Adopted in Rules v0.3 draft** (2026-10-22; Matias to confirm)
 - Rules version affected: next rules version (replaces v0.1/v0.2 house way)
 - Decision: Trips/quads → two of them to Hold'em; two+ pairs → highest pair; one pair 9s+ → pair; pair 2s–8s → pair unless two other cards both J+ (then those); no pair → two highest; keep same-suited cards together in Omaha. Full text: `05_Layout_Ops/House_Way_H_draft.md`.
 - Why: Dealer can apply it in seconds; within ~0.1–0.2% of the best computed split; ~1.4% of Base better than the v0.1 rule.
@@ -98,9 +98,27 @@ Append-only. One entry per design decision. To reverse a decision, add a new ent
 
 ## D-009 — Economics: Base pays less on a win (candidate structures)
 - Date: 2026-10-21
-- Status: **Open** — Matias to choose direction
+- Status: **Resolved 2026-10-22 → D-010** (optimal-play math: candidate (a) is only +0.15%)
 - Decision needed: Under v0.2 payouts the player has ~+21% edge (EXP-002). Leading candidates (house edge per Base, slight overestimates):
   (a) keep 4×/2×/1× + river fold; Base pushes on a win → ≈ +2.1% edge, 0.7% EoR;
   (b) 3×/2×/1× + fold; Base pays 1:4 on a win → ≈ +1.6%;
   (c) structure with ~5–7% edge plus a Base bonus paytable for strong winning hands (EXP-003, not yet run).
 - Evidence: EXP-002 part 2 (`03_Math/experiments/EXP-002/results_structures.json`).
+
+## D-010 — Payout structure: 4×/2×/1×, Base pushes on a win, no river fold
+- Date: 2026-10-22
+- Status: **Accepted** by Matias
+- Rules version affected: v0.3
+- Decision: Keep the 4× / 2× / 1× Play raise. The Base loses on a loss and pushes on a push and on a win; only the Play bet pays 1:1. A player who has not raised by the river must bet 1× (no fold).
+- Why: Under optimal play the house edge is ≈ 4.6% per Base (range 4.2–5.0%), element of risk ≈ 1.5%. Keeping the river fold would leave only ≈ 0.15%.
+- Evidence: EXP-003, EXP-004.
+- Alternatives considered: 3×/1×/1× with Base 1:2 (+2.7%), 2×/1×/1× with Base 1:2 and fold (+3.9%), Base bonus paytable (not computed).
+- Revisit when: player-appeal testing; possible Base bonus paytable.
+
+## D-011 — Player strategy book v1
+- Date: 2026-10-22
+- Status: Accepted as first edition
+- Decision: Publish the split rule B1, preflop rule R2 and flop rule F1 in `UTO_Game_Book_v0.3.md`.
+- Why: Simple enough to memorise; house edge vs book players 7.42% (optimal 4.6%).
+- Evidence: EXP-004.
+- Revisit when: improving the no-pair split and flop rules (up to ~2.4% recoverable).

@@ -44,3 +44,9 @@ Tip: periodically export this file to PDF and email it to yourself (or store it 
 - What changed: Matias rejected the equity-based dealer rule (needs to be dealer-usable). Derived House Way H (5-step rank rule) from the best computed rule. Scanned 40 payout/raise structures; making the Base push on a win (keeping 4x/2x/1x) gives ~2% house edge.
 - Who was involved: Matias, with Claude (AI assistant).
 - Disclosed to: none new.
+
+## 2026-10-21/22 — Optimal-play analysis; structure chosen; strategy book v1
+- What changed: Optimal-play engine built and validated (EXP-003). The 4x/2x/1x + Base-push + fold candidate is break-even, so Matias chose to remove the river fold (D-010). Rules v0.3 draft written; player strategy book v1 derived (EXP-004). House edge ≈ 4.6% (optimal play), 7.4% vs book players.
+- Who was involved: Matias, with Claude (AI assistant).
+- Files: 01_Rules/UTO_Rules_v0.3.md, UTO_Game_Book_v0.3.md, 03_Math/experiments/EXP-003, EXP-004.
+- Disclosed to: none new.
