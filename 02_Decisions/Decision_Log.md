@@ -74,3 +74,14 @@ Append-only. One entry per design decision. To reverse a decision, add a new ent
 - Evidence: Design intent; EV impact to be measured.
 - Alternatives considered: Any tie = overall loss (D-002, harsher); ties push that hand (more generous).
 - Revisit when: Math shows the house edge with this rule.
+
+## D-007 — Dealer house way: weighted equity rule (C, w = 0.5)
+- Date: 2026-10-21
+- Status: **Proposed** — awaiting Matias's approval; not yet in the rules
+- Rules version affected: next rules version
+- Decision: Dealer chooses, among its 15 possible splits, the one maximising `Hold'em equity + 0.5 × Omaha equity` (equities from the published equity tables, ties counted for the dealer).
+- Why: Best simple rule found; matches the simulation oracle within noise and beats the v0.1 house way by ~1.4% of Base (flat bet).
+- Evidence: EXP-001.
+- Alternatives considered: v0.1 Hold'em-first (A), Omaha-first (B), other weights, oracle (D), random.
+- Open issue: dealers can't compute equities by hand → needs a lookup chart or a distilled rule list (option E) before table use.
+- Revisit when: payouts/raise structure change (EXP-002), since the best split may shift.

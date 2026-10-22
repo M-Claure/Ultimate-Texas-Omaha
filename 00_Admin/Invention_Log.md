@@ -34,3 +34,8 @@ Tip: periodically export this file to PDF and email it to yourself (or store it 
 - What changed: Matias clarified that a tie counts as a lost hand, not an automatic overall loss (Win+Tie = push). Recorded as D-006, Rules v0.2.
 - Who was involved: Matias, with Claude (AI assistant).
 - Disclosed to: none new.
+
+## 2026-10-21 — Math engine built; EXP-001 dealer split tournament
+- What changed: Built hand evaluator, equity tables, house-way rules and simulator (03_Math/src). EXP-001 compared dealer split rules; weighted rule C (w=0.5) is best. Found that under Rules v0.2 payouts a simple player strategy beats the house by ~17% of Base, so the betting/payout structure must be rebalanced.
+- Who was involved: Matias, with Claude (AI assistant).
+- Disclosed to: none new.

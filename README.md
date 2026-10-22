@@ -8,7 +8,7 @@ This folder is the single source of truth for the design, math, testing, IP and 
 |---|---|
 | Current rules version | **v0.2** (`01_Rules/UTO_Rules_v0.2.md`) |
 | Stage | Prototype — payouts, house edge, strategy and dealer house way unvalidated |
-| Next milestone | Math v0.2: evaluator + simulator, optimal raise strategy, house edge |
+| Next milestone | Rebalance payouts/raises (EXP-002) — v0.2 rules are player-favorable (EXP-001) |
 | Plan | See `ROADMAP.md` |
 | Public disclosure so far | See `00_Admin/Disclosure_Log.md` |
 

@@ -1,0 +1,4 @@
+numpy>=2.0
+numba>=0.60
+pytest
+phevaluator   # tests only (independent evaluator for cross-checking)
