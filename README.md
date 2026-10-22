@@ -8,7 +8,7 @@ This folder is the single source of truth for the design, math, testing, IP and 
 |---|---|
 | Current rules version | **v0.3 draft** (`01_Rules/UTO_Rules_v0.3.md`) — game book: `UTO_Game_Book_v0.3.md` |
 | Stage | Prototype — house edge ≈ 4.6% under optimal play (simulation; not certified) |
-| Next milestone | Confirm House Way H (D-008); improve strategy book; playtests |
+| Next milestone | Improve strategy book (v2); playtests |
 | Plan | See `ROADMAP.md` |
 | Public disclosure so far | See `00_Admin/Disclosure_Log.md` |
 

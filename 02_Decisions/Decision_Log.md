@@ -88,7 +88,7 @@ Append-only. One entry per design decision. To reverse a decision, add a new ent
 
 ## D-008 — Dealer House Way H (simple five-step rule)
 - Date: 2026-10-21
-- Status: **Adopted in Rules v0.3 draft** (2026-10-22; Matias to confirm)
+- Status: **Accepted** — confirmed by Matias 2026-10-22 (in Rules v0.3)
 - Rules version affected: next rules version (replaces v0.1/v0.2 house way)
 - Decision: Trips/quads → two of them to Hold'em; two+ pairs → highest pair; one pair 9s+ → pair; pair 2s–8s → pair unless two other cards both J+ (then those); no pair → two highest; keep same-suited cards together in Omaha. Full text: `05_Layout_Ops/House_Way_H_draft.md`.
 - Why: Dealer can apply it in seconds; within ~0.1–0.2% of the best computed split; ~1.4% of Base better than the v0.1 rule.

@@ -50,3 +50,7 @@ Tip: periodically export this file to PDF and email it to yourself (or store it 
 - Who was involved: Matias, with Claude (AI assistant).
 - Files: 01_Rules/UTO_Rules_v0.3.md, UTO_Game_Book_v0.3.md, 03_Math/experiments/EXP-003, EXP-004.
 - Disclosed to: none new.
+
+## 2026-10-22 — House Way H confirmed
+- What changed: Matias confirmed dealer House Way H (D-008 accepted).
+- Disclosed to: none new.
