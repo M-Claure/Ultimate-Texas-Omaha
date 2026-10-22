@@ -39,3 +39,8 @@ Tip: periodically export this file to PDF and email it to yourself (or store it 
 - What changed: Built hand evaluator, equity tables, house-way rules and simulator (03_Math/src). EXP-001 compared dealer split rules; weighted rule C (w=0.5) is best. Found that under Rules v0.2 payouts a simple player strategy beats the house by ~17% of Base, so the betting/payout structure must be rebalanced.
 - Who was involved: Matias, with Claude (AI assistant).
 - Disclosed to: none new.
+
+## 2026-10-21 — Dealer-friendly House Way H; payout structure scan (EXP-002)
+- What changed: Matias rejected the equity-based dealer rule (needs to be dealer-usable). Derived House Way H (5-step rank rule) from the best computed rule. Scanned 40 payout/raise structures; making the Base push on a win (keeping 4x/2x/1x) gives ~2% house edge.
+- Who was involved: Matias, with Claude (AI assistant).
+- Disclosed to: none new.

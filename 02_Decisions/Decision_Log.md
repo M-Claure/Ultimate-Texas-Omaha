@@ -77,7 +77,7 @@ Append-only. One entry per design decision. To reverse a decision, add a new ent
 
 ## D-007 — Dealer house way: weighted equity rule (C, w = 0.5)
 - Date: 2026-10-21
-- Status: **Proposed** — awaiting Matias's approval; not yet in the rules
+- Status: **Rejected** by Matias (2026-10-21): a dealer must be able to apply the rule in the moment. Kept as the benchmark. See D-008.
 - Rules version affected: next rules version
 - Decision: Dealer chooses, among its 15 possible splits, the one maximising `Hold'em equity + 0.5 × Omaha equity` (equities from the published equity tables, ties counted for the dealer).
 - Why: Best simple rule found; matches the simulation oracle within noise and beats the v0.1 house way by ~1.4% of Base (flat bet).
@@ -85,3 +85,22 @@ Append-only. One entry per design decision. To reverse a decision, add a new ent
 - Alternatives considered: v0.1 Hold'em-first (A), Omaha-first (B), other weights, oracle (D), random.
 - Open issue: dealers can't compute equities by hand → needs a lookup chart or a distilled rule list (option E) before table use.
 - Revisit when: payouts/raise structure change (EXP-002), since the best split may shift.
+
+## D-008 — Dealer House Way H (simple five-step rule)
+- Date: 2026-10-21
+- Status: **Proposed** — awaiting Matias's approval
+- Rules version affected: next rules version (replaces v0.1/v0.2 house way)
+- Decision: Trips/quads → two of them to Hold'em; two+ pairs → highest pair; one pair 9s+ → pair; pair 2s–8s → pair unless two other cards both J+ (then those); no pair → two highest; keep same-suited cards together in Omaha. Full text: `05_Layout_Ops/House_Way_H_draft.md`.
+- Why: Dealer can apply it in seconds; within ~0.1–0.2% of the best computed split; ~1.4% of Base better than the v0.1 rule.
+- Evidence: EXP-002 part 1.
+- Alternatives considered: v0.1 rule (A), rule C (D-007, rejected), oracle, simpler variants S1/S2.
+- Revisit when: payout structure is final (re-check that H is still near-best).
+
+## D-009 — Economics: Base pays less on a win (candidate structures)
+- Date: 2026-10-21
+- Status: **Open** — Matias to choose direction
+- Decision needed: Under v0.2 payouts the player has ~+21% edge (EXP-002). Leading candidates (house edge per Base, slight overestimates):
+  (a) keep 4×/2×/1× + river fold; Base pushes on a win → ≈ +2.1% edge, 0.7% EoR;
+  (b) 3×/2×/1× + fold; Base pays 1:4 on a win → ≈ +1.6%;
+  (c) structure with ~5–7% edge plus a Base bonus paytable for strong winning hands (EXP-003, not yet run).
+- Evidence: EXP-002 part 2 (`03_Math/experiments/EXP-002/results_structures.json`).

@@ -85,7 +85,7 @@ def ev_river(ph, pp, board, d_rule, d_w, rollouts, HEW, HET, OMW, OMT, NF, FL):
     return s / rollouts
 
 
-@njit(parallel=True, cache=True)
+@njit(parallel=True)
 def simulate_s1(n, seed, d_rule, d_w, p_rule, p_w, pre_rollouts, river_rollouts, mc_seed,
                 HEW, HET, OMW, OMT, NF, FL):
     ev_pre = np.zeros(n)

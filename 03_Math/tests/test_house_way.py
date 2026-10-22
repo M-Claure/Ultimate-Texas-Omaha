@@ -31,3 +31,17 @@ def test_weighted_is_sane():
     # AA to Hold'em is not forced, but split must be one of 15 and keep 4 for Omaha
     hand = "Ac Ad Kc Kd 7h 2s"
     assert len(he_cards(hand, WEIGHTED, 0.5)) == 2
+
+
+def test_house_way_H():
+    from uto.house_way import SIMPLE, simple_code
+    H = simple_code(P=7, q=9, s=2)
+    assert he_cards("5c 5d As Kh 9c 2d", SIMPLE, H) == [2, 3]   # small pair, A & K both J+ -> AK
+    assert he_cards("5c 5d As Th 9c 2d", SIMPLE, H) == [0, 1]   # T is below J -> keep the pair
+    assert he_cards("9c 9d As Kh 7c 2d", SIMPLE, H) == [0, 1]   # 9s or better -> pair
+    assert he_cards("9c 9d 4s 4h Ac 2d", SIMPLE, H) == [0, 1]   # two pairs -> higher pair
+    assert he_cards("Ac Jd 9s 7h 4c 2d", SIMPLE, H) == [0, 1]   # no pair -> two highest
+    assert he_cards("7c 7d 7s Kh 4c 2d", SIMPLE, H)[0] < 3      # trips -> two of the trips
+    # suit choice: Hold'em takes the 7 whose removal keeps Omaha suited
+    hand = "7c 7d 7s Kc 4d 2h"   # leaving 7c with Kc and 7d with 4d keeps Omaha double-suited
+    assert he_cards(hand, SIMPLE, H) == [0, 2] or he_cards(hand, SIMPLE, H) == [1, 2]

@@ -9,7 +9,7 @@ from .evaluator import holdem_fast, omaha_fast, eval5
 from .house_way import (PAIRS6, COMP6, choose_split, oracle_split, ORACLE)
 
 
-@njit(parallel=True, cache=True)
+@njit(parallel=True)
 def simulate(n, seed, d_rule, d_w, p_rule, p_w, rollouts, oracle_seed,
              HEW, HET, OMW, OMT, NF, FL):
     """Returns per-hand arrays:

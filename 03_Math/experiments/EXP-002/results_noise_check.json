@@ -1,0 +1,12 @@
+{
+ "low": {
+  "{'pre': 4, 'flop': 2, 'base_win': 1.0, 'river_fold': True}": -0.21768,
+  "{'pre': 4, 'flop': 2, 'base_win': 0.0, 'river_fold': True}": 0.01726,
+  "{'pre': 3, 'flop': 1, 'base_win': 0.5, 'river_fold': True}": -0.00529
+ },
+ "high": {
+  "{'pre': 4, 'flop': 2, 'base_win': 1.0, 'river_fold': True}": -0.22234,
+  "{'pre': 4, 'flop': 2, 'base_win': 0.0, 'river_fold': True}": 0.01242,
+  "{'pre': 3, 'flop': 1, 'base_win': 0.5, 'river_fold': True}": -0.0072
+ }
+}
